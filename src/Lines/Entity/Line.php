@@ -1,6 +1,7 @@
 <?php
-namespace App\Users\Entity;
-class User
+namespace App\Lines\Entity;
+
+class Line
 {
     protected $idArret;
     protected $nomArret;

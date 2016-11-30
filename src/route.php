@@ -1,2 +1,3 @@
 <?php
-$app->get('/bus/stop', 'App\Users\Controller\IndexController::BusStop');
+$app->get('/bus/stop', 'App\Lines\Controller\IndexController::BusStop');
+

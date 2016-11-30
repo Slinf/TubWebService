@@ -9,6 +9,6 @@ $app->register(new TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views',
 ));
 //Ajout des repository
-$app['repository.user'] = function ($app) {
-    return new App\Users\Repository\UserRepository($app['db']);
+$app['repository.line'] = function ($app) {
+    return new App\Lines\Repository\LineRepository($app['db']);
 };

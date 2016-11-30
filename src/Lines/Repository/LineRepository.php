@@ -1,11 +1,11 @@
 <?php
-namespace App\Users\Repository;
-use App\Users\Entity\User;
+namespace App\Lines\Repository;
+use App\Lines\Entity\Line;
 use Doctrine\DBAL\Connection;
 /**
- * User repository.
+ * Line repository.
  */
-class UserRepository
+class LineRepository
 {
     /**
      * @var \Doctrine\DBAL\Connection
@@ -30,7 +30,7 @@ class UserRepository
        $statement = $queryBuilder->execute();
        $LinesData = $statement->fetchAll();
        foreach ($LinesData as $LineData) {
-           $LinesBusList[$LineData['idArret']] = new User($LineData['idArret'], $LineData['nomArret'], $LineData['numLigne'], $LineData['nomLigne'], $LineData['latitude'], $LineData['longitude']);
+           $LinesBusList[$LineData['idArret']] = new Line($LineData['idArret'], $LineData['nomArret'], $LineData['numLigne'], $LineData['nomLigne'], $LineData['latitude'], $LineData['longitude']);
        }
        return $LinesData;
    }
@@ -52,6 +52,6 @@ class UserRepository
            ->setParameter(0, $idArret);
        $statement = $queryBuilder->execute();
        $LineData = $statement->fetchAll();
-       return new User($LineData[0]['idArret'],$LineData[0]['nomArret'],$LineData[0]['numLigne'], $LineData[0]['nomLigne'], $LineData[0]['latitude'], $LineData[0]['longitude']);
+       return new Line($LineData[0]['idArret'],$LineData[0]['nomArret'],$LineData[0]['numLigne'], $LineData[0]['nomLigne'], $LineData[0]['latitude'], $LineData[0]['longitude']);
    }
 }
