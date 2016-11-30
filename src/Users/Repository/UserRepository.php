@@ -25,14 +25,14 @@ class UserRepository
    {
        $queryBuilder = $this->db->createQueryBuilder();
        $queryBuilder
-           ->select('u.*')
-           ->from('Ligne', 'u');
+           ->select('*')
+           ->from('Ligne','L');
        $statement = $queryBuilder->execute();
        $LinesData = $statement->fetchAll();
        foreach ($LinesData as $LineData) {
            $LinesBusList[$LineData['idArret']] = new User($LineData['idArret'], $LineData['nomArret'], $LineData['numLigne'], $LineData['nomLigne'], $LineData['latitude'], $LineData['longitude']);
        }
-       return $LinesBusList;
+       return $LinesData;
    }
 
    /**

@@ -8,7 +8,9 @@ class IndexController
     {   
        //Appel fonction qui effectue la requête
        $LinesBusList = $app['repository.user']->getById(1);
+       $AllLinesBus = $app['repository.user']->getAll();
+       
+       return json_encode($AllLinesBus);
        return json_encode($LinesBusList);
-       echo json_encode($LinesBusList);
     }
 }
