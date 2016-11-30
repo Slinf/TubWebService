@@ -15,140 +15,43 @@ class UserRepository
     {
         $this->db = $db;
     }
+
    /**
-    * Returns a collection of users.
+    * Returns a collection of ligne.
     *
-    * @param int $limit
-    *   The number of users to return.
-    * @param int $offset
-    *   The number of users to skip.
-    * @param array $orderBy
-    *   Optionally, the order by info, in the $column => $direction format.
-    *
-    * @return array A collection of users, keyed by user id.
+    * @return array A collection of Lines, keyed by idArret.
     */
    public function getAll()
    {
        $queryBuilder = $this->db->createQueryBuilder();
        $queryBuilder
            ->select('u.*')
-           ->from('users', 'u');
-       $statement = $queryBuilder->execute();
-       $usersData = $statement->fetchAll();
-       foreach ($usersData as $userData) {
-           $userEntityList[$userData['id']] = new User($userData['id'], $userData['nom'], $userData['prenom'], $userData['age'], $userData['ville'], $userData['cp'], $userData['rue'] );
-       }
-       return $userEntityList;
-   }
-
-/**
-    * Returns an Bus Line
-    *
-    */
-   public function getAllLigne()
-   {
-       $queryBuilder = $this->db->createQueryBuilder();
-       $queryBuilder
-           ->select('u.*')
            ->from('Ligne', 'u');
        $statement = $queryBuilder->execute();
-       $Data = $statement->fetchAll();
-
-       return $Data;
+       $LinesData = $statement->fetchAll();
+       foreach ($LinesData as $LineData) {
+           $LinesBusList[$LineData['idArret']] = new User($LineData['idArret'], $LineData['nomArret'], $LineData['numLigne'], $LineData['nomLigne'], $LineData['latitude'], $LineData['longitude']);
+       }
+       return $LinesBusList;
    }
 
-
    /**
-    * Returns an User object.
-    *
+    * Returns an BusLine object.
     * @param $id
-    *   The id of the user to return.
+    *   The id of the Line to return.
     *
-    * @return array A collection of users, keyed by user id.
+    * @return array A collection of Line, keyed by idArret.
     */
-   public function getById($id)
+   public function getById($idArret)
    {
        $queryBuilder = $this->db->createQueryBuilder();
        $queryBuilder
            ->select('u.*')
-           ->from('users', 'u')
-           ->where('id = ?')
-           ->setParameter(0, $id);
+           ->from('Ligne', 'u')
+           ->where('idArret = ?')
+           ->setParameter(0, $idArret);
        $statement = $queryBuilder->execute();
-       $userData = $statement->fetchAll();
-       return new User($userData[0]['id'], $userData[0]['nom'], $userData[0]['prenom'], $userData[0]['age'], $userData[0]['ville'], $userData[0]['cp'], $userData[0]['rue'] );
+       $LineData = $statement->fetchAll();
+       return new User($LineData[0]['idArret'],$LineData[0]['nomArret'],$LineData[0]['numLigne'], $LineData[0]['nomLigne'], $LineData[0]['latitude'], $LineData[0]['longitude']);
    }
-    public function delete($id)
-    {
-        $queryBuilder = $this->db->createQueryBuilder();
-        $queryBuilder
-          ->delete('users')
-          ->where('id = :id')
-          ->setParameter(':id', $id);
-        $statement = $queryBuilder->execute();
-    }
-    public function update($parameters)
-    {
-        $queryBuilder = $this->db->createQueryBuilder();
-        $queryBuilder
-          ->update('users')
-          ->where('id = :id')
-          ->setParameter(':id', $parameters['id']);
-        if ($parameters['nom']) {
-            $queryBuilder
-              ->set('nom', ':nom')
-              ->setParameter(':nom', $parameters['nom']);
-        }
-        if ($parameters['prenom']) {
-            $queryBuilder
-            ->set('prenom', ':prenom')
-            ->setParameter(':prenom', $parameters['prenom']);
-        }
-         if ($parameters['age']) {
-            $queryBuilder
-              ->set('age', ':age')
-              ->setParameter(':age', $parameters['age']);
-        }
-         if ($parameters['ville']) {
-            $queryBuilder
-              ->set('ville', ':ville')
-              ->setParameter(':ville', $parameters['ville']);
-        }
-         if ($parameters['rue']) {
-            $queryBuilder
-              ->set('rue', ':rue')
-              ->setParameter(':rue', $parameters['rue']);
-        }
-          
-         if ($parameters['cp']) {
-            $queryBuilder
-              ->set('cp', ':cp')
-              ->setParameter(':cp', $parameters['cp']);
-        }
-
-        $statement = $queryBuilder->execute();
-    }
-    public function insert($parameters)
-    {
-        $queryBuilder = $this->db->createQueryBuilder();
-        $queryBuilder
-          ->insert('users')
-          ->values(
-              array(
-                'nom' => ':nom',
-                'prenom' => ':prenom',
-                'age' => ':age',
-                'ville' => ':ville',
-                'rue' => ':rue',
-                'cp' => ':cp',
-              )
-          )
-          ->setParameter(':nom', $parameters['nom'])
-          ->setParameter(':prenom', $parameters['prenom'])
-          ->setParameter(':age', $parameters['age'])
-          ->setParameter(':ville', $parameters['ville'])
-          ->setParameter(':rue', $parameters['rue'])
-          ->setParameter(':cp', $parameters['cp']);
-        $statement = $queryBuilder->execute();
-    }
 }
