@@ -33,6 +33,9 @@ class ComposerStaticInitba96ead545f72ae72ccc61df938c18a7
         ),
         'A' => 
         array (
+            'App\\Stops\\Repository\\' => 21,
+            'App\\Stops\\Entity\\' => 17,
+            'App\\Stops\\Controller\\' => 21,
             'App\\Lines\\Repository\\' => 21,
             'App\\Lines\\Entity\\' => 17,
             'App\\Lines\\Controller\\' => 21,
@@ -83,6 +86,18 @@ class ComposerStaticInitba96ead545f72ae72ccc61df938c18a7
         'Doctrine\\Common\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/common/lib/Doctrine/Common',
+        ),
+        'App\\Stops\\Repository\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Stops/Repository',
+        ),
+        'App\\Stops\\Entity\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Stops/Entity',
+        ),
+        'App\\Stops\\Controller\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Stops/Controller',
         ),
         'App\\Lines\\Repository\\' => 
         array (

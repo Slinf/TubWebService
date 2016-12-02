@@ -30,7 +30,7 @@ class LineRepository
        $statement = $queryBuilder->execute();
        $LinesData = $statement->fetchAll();
        foreach ($LinesData as $LineData) {
-           $LinesBusList[$LineData['idArret']] = new Line($LineData['idArret'], $LineData['nomArret'], $LineData['numLigne'], $LineData['nomLigne'], $LineData['latitude'], $LineData['longitude']);
+           $LinesBusList[$LineData['idArret']] = new Line($LineData['idArret'], $LineData['idLigne'],$LineData['numLigne'], $LineData['nomLigne']);
        }
        return $LinesData;
    }
@@ -52,6 +52,6 @@ class LineRepository
            ->setParameter(0, $idArret);
        $statement = $queryBuilder->execute();
        $LineData = $statement->fetchAll();
-       return new Line($LineData[0]['idArret'],$LineData[0]['nomArret'],$LineData[0]['numLigne'], $LineData[0]['nomLigne'], $LineData[0]['latitude'], $LineData[0]['longitude']);
+       return new Line($LineData[0]['idArret'],$LineData[0]['idLigne'],$LineData[0]['numLigne'], $LineData[0]['nomLigne']);
    }
 }

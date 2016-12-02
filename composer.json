@@ -15,7 +15,11 @@
        "psr-4": {
          "App\\Lines\\Controller\\": "src/Lines/Controller/",
          "App\\Lines\\Repository\\": "src/Lines/Repository/",
-         "App\\Lines\\Entity\\": "src/Lines/Entity/"
+         "App\\Lines\\Entity\\": "src/Lines/Entity/",
+
+         "App\\Stops\\Controller\\": "src/Stops/Controller/",
+         "App\\Stops\\Repository\\": "src/Stops/Repository/",
+         "App\\Stops\\Entity\\": "src/Stops/Entity/"
        }
    }
 }

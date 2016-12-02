@@ -4,19 +4,16 @@ namespace App\Lines\Entity;
 class Line
 {
     protected $idArret;
-    protected $nomArret;
+    protected $idLigne;
     protected $numLigne;
     protected $nomLigne;
-    protected $latitude;
-    protected $longitude;
 
-    public function __construct($idArret, $nomArret, $numLigne, $nomLigne, $latitude, $longitude)
+
+    public function __construct($idArret, $idLigne, $numLigne,$nomLigne)
     {
         $this->idArret = $idArret;
-        $this->nomArret = $nomArret;
+        $this->idLigne = $idLigne;
         $this->numLigne = $numLigne;
         $this->nomLigne = $nomLigne;
-        $this->latitude = $latitude;
-        $this->longitude=$longitude;
     }
 }
