@@ -19,7 +19,11 @@
 
          "App\\Stops\\Controller\\": "src/Stops/Controller/",
          "App\\Stops\\Repository\\": "src/Stops/Repository/",
-         "App\\Stops\\Entity\\": "src/Stops/Entity/"
+         "App\\Stops\\Entity\\": "src/Stops/Entity/",
+
+         "App\\Pass\\Controller\\": "src/Pass/Controller/",
+         "App\\Pass\\Repository\\": "src/Pass/Repository/",
+         "App\\Pass\\Entity\\": "src/Pass/Entity/"
        }
    }
 }

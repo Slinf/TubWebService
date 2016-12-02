@@ -20,3 +20,7 @@ $app['repository.line'] = function ($app) {
 $app['repository.stop'] = function ($app) {
     return new App\Stops\Repository\StopRepository($app['db']);
 };
+
+$app['repository.pass'] = function ($app) {
+    return new App\Pass\Repository\PassRepository($app['db']);
+};
