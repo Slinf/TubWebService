@@ -3,15 +3,15 @@ namespace App\Stops\Entity;
 
 class Stop
 {
-    protected $idArret;
-    protected $nomArret;
+    protected $idStop;
+    protected $nameStop;
     protected $latitude;
     protected $longitude;
 
-    public function __construct($idArret, $nomArret, $latitude, $longitude)
+    public function __construct($idStop, $nameStop, $latitude, $longitude)
     {
-        $this->idArret = $idArret;
-        $this->nomArret = $nomArret;
+        $this->idStop = $idStop;
+        $this->nameStop = $nameStop;
         $this->latitude = $latitude;
         $this->longitude=$longitude;
     }

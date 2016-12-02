@@ -3,17 +3,17 @@ namespace App\Lines\Entity;
 
 class Line
 {
-    protected $idArret;
-    protected $idLigne;
-    protected $numLigne;
-    protected $nomLigne;
+    protected $idStop;
+    protected $idLine;
+    protected $numLine;
+    protected $nameLine;
 
 
-    public function __construct($idArret, $idLigne, $numLigne,$nomLigne)
+    public function __construct($idStop, $idLine, $numLine,$nameLine)
     {
-        $this->idArret = $idArret;
-        $this->idLigne = $idLigne;
-        $this->numLigne = $numLigne;
-        $this->nomLigne = $nomLigne;
+        $this->idStop = $idStop;
+        $this->idLine = $idLine;
+        $this->numLine = $numLine;
+        $this->nameLine = $nameLine;
     }
 }

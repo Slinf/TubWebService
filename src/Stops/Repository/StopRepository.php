@@ -27,11 +27,11 @@ class StopRepository
        $queryBuilder = $this->db->createQueryBuilder();
        $queryBuilder
            ->select('*')
-           ->from('Arret','A');
+           ->from('Stop','A');
        $statement = $queryBuilder->execute();
        $StopsData = $statement->fetchAll();
        foreach ($StopsData as $StopData) {
-           $StopsBusList[$StopData['idArret']] = new Stop($StopData['idArret'], $StopData['nomArret'],$StopData['latitude'], $StopData['longitude']);
+           $StopsBusList[$StopData['idStop']] = new Stop($StopData['idStop'], $StopData['nameStop'],$StopData['latitude'], $StopData['longitude']);
        }
        return $StopsData;
    }

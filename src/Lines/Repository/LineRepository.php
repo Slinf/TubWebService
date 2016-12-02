@@ -17,20 +17,20 @@ class LineRepository
     }
 
    /**
-    * Returns a collection of ligne.
+    * Returns a collection of line.
     *
-    * @return array A collection of Lines, keyed by idArret.
+    * @return array A collection of Lines, keyed by idStop.
     */
    public function getAll()
    {
        $queryBuilder = $this->db->createQueryBuilder();
        $queryBuilder
            ->select('*')
-           ->from('Ligne','L');
+           ->from('Line','L');
        $statement = $queryBuilder->execute();
        $LinesData = $statement->fetchAll();
        foreach ($LinesData as $LineData) {
-           $LinesBusList[$LineData['idArret']] = new Line($LineData['idArret'], $LineData['idLigne'],$LineData['numLigne'], $LineData['nomLigne']);
+           $LinesBusList[$LineData['idStop']] = new Line($LineData['idStop'], $LineData['idLine'],$LineData['numLine'], $LineData['nameLine']);
        }
        return $LinesData;
    }
@@ -40,18 +40,18 @@ class LineRepository
     * @param $id
     *   The id of the Line to return.
     *
-    * @return array A collection of Line, keyed by idArret.
+    * @return array A collection of Line, keyed by idStop.
     */
-   public function getById($idArret)
+   public function getById($idStop)
    {
        $queryBuilder = $this->db->createQueryBuilder();
        $queryBuilder
            ->select('u.*')
-           ->from('Ligne', 'u')
-           ->where('idArret = ?')
+           ->from('Line', 'u')
+           ->where('idStop = ?')
            ->setParameter(0, $idArret);
        $statement = $queryBuilder->execute();
        $LineData = $statement->fetchAll();
-       return new Line($LineData[0]['idArret'],$LineData[0]['idLigne'],$LineData[0]['numLigne'], $LineData[0]['nomLigne']);
+       return new Line($LineData[0]['idStop'],$LineData[0]['idLine'],$LineData[0]['numLine'], $LineData[0]['nameLine']);
    }
 }
