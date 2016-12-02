@@ -7,7 +7,7 @@ class StopsController
     public function GetStops(Request $request, Application $app)
     {   
        //Appel fonction qui effectue la requête
-        $StopsBusList = $app['repository.stop']->BusStops;
+        $StopsBusList = $app['repository.stop']->BusStops();
         return json_encode(array('stops' => $StopsBusList));
     }
 }

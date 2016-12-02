@@ -26,9 +26,8 @@ class StopRepository
    {
        $queryBuilder = $this->db->createQueryBuilder();
        $queryBuilder
-           ->select('A.*')
-           ->from('Arret', 'A');
-              
+           ->select('*')
+           ->from('Arret','A');
        $statement = $queryBuilder->execute();
        $StopsData = $statement->fetchAll();
        foreach ($StopsData as $StopData) {
@@ -36,4 +35,5 @@ class StopRepository
        }
        return $StopsData;
    }
+
 }
